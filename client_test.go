@@ -144,8 +144,9 @@ func TestSendMessage(t *testing.T) {
 	// 发送消息
 	ctx := context.Background()
 	req := &SendMessageRequest{
-		ChannelID: 1,
-		Receiver:  "13800138000",
+		ChannelID:     1,
+		SignatureName: "【测试签名】",
+		Receiver:      "13800138000",
 		TemplateParams: map[string]interface{}{
 			"code": "123456",
 		},
@@ -199,8 +200,9 @@ func TestSendBatch(t *testing.T) {
 	// 批量发送消息
 	ctx := context.Background()
 	req := &SendBatchRequest{
-		ChannelID: 1,
-		Receivers: []string{"13800138000", "13800138001", "13800138002"},
+		ChannelID:     1,
+		SignatureName: "【测试签名】",
+		Receivers:     []string{"13800138000", "13800138001", "13800138002"},
 		TemplateParams: map[string]interface{}{
 			"content":  "系统维护通知",
 			"duration": "2小时",
@@ -300,8 +302,9 @@ func TestAPIError(t *testing.T) {
 	// 发送消息（应该返回错误）
 	ctx := context.Background()
 	req := &SendMessageRequest{
-		ChannelID: 1,
-		Receiver:  "13800138000",
+		ChannelID:     1,
+		SignatureName: "【测试签名】",
+		Receiver:      "13800138000",
 	}
 
 	_, err := client.SendMessage(ctx, req)
@@ -341,8 +344,9 @@ func TestContextTimeout(t *testing.T) {
 	defer cancel()
 
 	req := &SendMessageRequest{
-		ChannelID: 1,
-		Receiver:  "13800138000",
+		ChannelID:     1,
+		SignatureName: "【测试签名】",
+		Receiver:      "13800138000",
 	}
 
 	// 应该超时
@@ -378,8 +382,9 @@ func TestContextCancellation(t *testing.T) {
 	}()
 
 	req := &SendMessageRequest{
-		ChannelID: 1,
-		Receiver:  "13800138000",
+		ChannelID:     1,
+		SignatureName: "【测试签名】",
+		Receiver:      "13800138000",
 	}
 
 	// 应该被取消

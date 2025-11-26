@@ -41,8 +41,9 @@ func main() {
     // 发送短信
     ctx := context.Background()
     data, err := client.SendMessage(ctx, &mlievpush.SendMessageRequest{
-        ChannelID: 1,
-        Receiver:  "13800138000",
+        ChannelID:     1,
+        SignatureName: "【您的签名】",
+        Receiver:      "13800138000",
         TemplateParams: map[string]interface{}{
             "code": "123456",
         },
@@ -80,8 +81,9 @@ client := mlievpush.NewClient(
 
 ```go
 req := &mlievpush.SendMessageRequest{
-    ChannelID: 1,                              // 通道ID（必填）
-    Receiver:  "13800138000",                  // 接收者（必填）
+    ChannelID:     1,                          // 通道ID（必填）
+    SignatureName: "【您的签名】",              // 签名名称（必填）
+    Receiver:      "13800138000",              // 接收者（必填）
     TemplateParams: map[string]interface{}{    // 模板参数（可选）
         "code":        "123456",
         "expire_time": "5",
@@ -104,7 +106,8 @@ fmt.Printf("状态: %s\n", data.Status)
 
 ```go
 req := &mlievpush.SendBatchRequest{
-    ChannelID: 1,
+    ChannelID:     1,
+    SignatureName: "【您的签名】",
     Receivers: []string{
         "13800138000",
         "13800138001",
@@ -213,6 +216,12 @@ if mlievpush.IsAPIError(err) {
 ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 defer cancel()
 
+req := &mlievpush.SendMessageRequest{
+    ChannelID:     1,
+    SignatureName: "【您的签名】",
+    Receiver:      "13800138000",
+}
+
 data, err := client.SendMessage(ctx, req)
 if err != nil {
     if ctx.Err() == context.DeadlineExceeded {
@@ -231,6 +240,12 @@ go func() {
     time.Sleep(1 * time.Second)
     cancel()
 }()
+
+req := &mlievpush.SendMessageRequest{
+    ChannelID:     1,
+    SignatureName: "【您的签名】",
+    Receiver:      "13800138000",
+}
 
 data, err := client.SendMessage(ctx, req)
 if err != nil {
@@ -317,10 +332,6 @@ go test -v -cover
 ## 许可证
 
 MIT License
-
-## 相关文档
-
-- [API 对接文档](doc/API_INTEGRATION.md)
 
 ## 支持
 
