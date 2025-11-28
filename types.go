@@ -4,20 +4,20 @@ import "encoding/json"
 
 // SendMessageRequest 发送单条消息请求
 type SendMessageRequest struct {
-	ChannelID      int                    `json:"channel_id"`                // 通道ID（必填）
-	SignatureName  string                 `json:"signature_name"`            // 签名名称（必填）
-	Receiver       string                 `json:"receiver"`                  // 接收者（必填）
-	TemplateParams map[string]interface{} `json:"template_params,omitempty"` // 模板参数（可选）
-	ScheduledAt    string                 `json:"scheduled_at,omitempty"`    // 定时发送时间（ISO 8601格式，可选）
+	ChannelID      int               `json:"channel_id"`                // 通道ID（必填）
+	SignatureName  string            `json:"signature_name"`            // 签名名称（必填）
+	Receiver       string            `json:"receiver"`                  // 接收者（必填）
+	TemplateParams map[string]string `json:"template_params,omitempty"` // 模板参数（可选）
+	ScheduledAt    string            `json:"scheduled_at,omitempty"`    // 定时发送时间（ISO 8601格式，可选）
 }
 
 // SendBatchRequest 批量发送消息请求
 type SendBatchRequest struct {
-	ChannelID      int                    `json:"channel_id"`                // 通道ID（必填）
-	SignatureName  string                 `json:"signature_name"`            // 签名名称（必填）
-	Receivers      []string               `json:"receivers"`                 // 接收者列表（必填）
-	TemplateParams map[string]interface{} `json:"template_params,omitempty"` // 模板参数（可选）
-	ScheduledAt    string                 `json:"scheduled_at,omitempty"`    // 定时发送时间（ISO 8601格式，可选）
+	ChannelID      int               `json:"channel_id"`                // 通道ID（必填）
+	SignatureName  string            `json:"signature_name"`            // 签名名称（必填）
+	Receivers      []string          `json:"receivers"`                 // 接收者列表（必填）
+	TemplateParams map[string]string `json:"template_params,omitempty"` // 模板参数（可选）
+	ScheduledAt    string            `json:"scheduled_at,omitempty"`    // 定时发送时间（ISO 8601格式，可选）
 }
 
 // Response 通用API响应结构
