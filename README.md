@@ -1,3 +1,5 @@
+> ⚠️ 项目已迁移至 https://github.com/mliev-sdk/push-go ，本仓库已废弃归档，仅供历史参考。
+
 # mliev-push-go
 
 消息推送服务的 Go SDK，支持短信、邮件、企业微信、钉钉等多种消息类型。
